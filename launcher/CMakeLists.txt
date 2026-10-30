@@ -243,6 +243,8 @@ set(MINECRAFT_SOURCES
 
     minecraft/launch/ClaimAccount.cpp
     minecraft/launch/ClaimAccount.h
+    minecraft/launch/ApplyKeybindProfile.cpp
+    minecraft/launch/ApplyKeybindProfile.h
     minecraft/launch/CreateGameFolders.cpp
     minecraft/launch/CreateGameFolders.h
     minecraft/launch/EnsureAvailableMemory.cpp
@@ -298,6 +300,8 @@ set(MINECRAFT_SOURCES
     minecraft/MojangDownloadInfo.h
     minecraft/VanillaInstanceCreationTask.cpp
     minecraft/VanillaInstanceCreationTask.h
+    minecraft/KeybindProfile.cpp
+    minecraft/KeybindProfile.h
     minecraft/VersionFile.cpp
     minecraft/VersionFile.h
     minecraft/VersionFilterData.h
@@ -934,6 +938,8 @@ SET(LAUNCHER_SOURCES
     ui/pages/global/LauncherPage.cpp
     ui/pages/global/LauncherPage.h
     ui/pages/global/AppearancePage.h
+    ui/pages/global/KeybindsPage.cpp
+    ui/pages/global/KeybindsPage.h
     ui/pages/global/ProxyPage.cpp
     ui/pages/global/ProxyPage.h
     ui/pages/global/APIPage.cpp

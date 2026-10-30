@@ -62,6 +62,7 @@
 #include "ui/pages/global/AppearancePage.h"
 #include "ui/pages/global/ExternalToolsPage.h"
 #include "ui/pages/global/JavaPage.h"
+#include "ui/pages/global/KeybindsPage.h"
 #include "ui/pages/global/LanguagePage.h"
 #include "ui/pages/global/LauncherPage.h"
 #include "ui/pages/global/MinecraftPage.h"
@@ -915,6 +916,9 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         // Custom Technic Client ID
         m_settings->registerSetting("TechnicClientID", "");
 
+        // Keybinds for new instances, as JSON object of action -> key
+        m_settings->registerSetting("KeybindProfile", "");
+
         // Init page provider
         {
             m_globalSettingsProvider = std::make_unique<GenericPageProvider>(tr("Settings"));
@@ -922,6 +926,7 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
             m_globalSettingsProvider->addPage<LanguagePage>();
             m_globalSettingsProvider->addPage<AppearancePage>();
             m_globalSettingsProvider->addPage<MinecraftPage>();
+            m_globalSettingsProvider->addPage<KeybindsPage>();
             m_globalSettingsProvider->addPage<JavaPage>();
             m_globalSettingsProvider->addPage<AccountListPage>();
             m_globalSettingsProvider->addPage<APIPage>();

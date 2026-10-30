@@ -6,6 +6,7 @@ set(TEST_SOURCES
     FileSystem_test.cpp
     GZip_test.cpp
     GradleSpecifier_test.cpp
+    KeybindProfile_test.cpp
     MojangVersionFormat_test.cpp
     Library_test.cpp
     ResourceFolderModel_test.cpp

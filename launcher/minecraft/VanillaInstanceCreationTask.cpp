@@ -3,6 +3,7 @@
 #include <utility>
 
 #include "FileSystem.h"
+#include "minecraft/KeybindProfile.h"
 #include "minecraft/MinecraftInstance.h"
 #include "minecraft/PackProfile.h"
 #include "settings/INISettingsObject.h"
@@ -29,6 +30,7 @@ void VanillaCreationTask::executeTask()
 
         m_instance->setName(name());
         m_instance->setIconKey(m_instIcon);
+        m_instance->settings()->set("ApplyKeybindProfile", !KeybindProfile::load().isEmpty());
 
         components->saveNow();
     }

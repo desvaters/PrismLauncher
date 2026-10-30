@@ -56,6 +56,7 @@
 #include "launch/steps/TextPrint.h"
 
 #include "minecraft/auth/AccountList.h"
+#include "minecraft/launch/ApplyKeybindProfile.h"
 #include "minecraft/launch/AutoInstallJava.h"
 #include "minecraft/launch/ClaimAccount.h"
 #include "minecraft/launch/CreateGameFolders.h"
@@ -258,6 +259,9 @@ void MinecraftInstance::loadSpecificSettings()
     // Use account for instance, this does not have a global override
     m_settings->registerSetting("UseAccountForInstance", false);
     m_settings->registerSetting("InstanceAccountId", "");
+
+    // Set on creation, cleared once the keybind profile has been applied, this does not have a global override
+    m_settings->registerSetting("ApplyKeybindProfile", false);
 
     m_settings->registerSetting("ExportName", "");
     m_settings->registerSetting("ExportVersion", "1.0.0");
@@ -1247,6 +1251,11 @@ LaunchTask* MinecraftInstance::createLaunchTask(AuthSessionPtr session, Minecraf
     // reconstruct assets if needed
     {
         process->appendStep(makeShared<ReconstructAssets>(pptr));
+    }
+
+    // write the launcher's keybind profile into options.txt on the first launch
+    {
+        process->appendStep(makeShared<ApplyKeybindProfile>(pptr));
     }
 
     {
